@@ -15,14 +15,17 @@ def services():
 def request():
   return render_template('quote.html')
 
-@app.route('/about')
+@app.route('/aboutus')
 def about():
   return render_template('about.html')
 
-@app.route('/contact')
+@app.route('/contactus')
 def contact():
   return render_template('contact.html')
 
+@app.route('/faq')
+def faq():
+  return render_template('faq.html')
 
 if __name__ == '__main__':
   app.run(host="0.0.0.0", debug=True)

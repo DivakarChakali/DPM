@@ -8,112 +8,182 @@
         {% endblock %}
     </title>
     <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/logo.jpeg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
     <header class="header">
       {% include "navbar.html" %}
     </header>
-    <div style=height:15vh></div>
-        <!-- content block-->
+    <div style=height:15vh>
+    </div>
+    <!-- content block-->
     <div class="container-fluid">
-        {% block content %}
-        {% endblock %}
+      {% block content %}
+      {% endblock %}
     </div>
-        <!-- /content block-->
-        <!-- footer -->
-      <!-- Footer -->
-<footer class="text-center text-lg-start bg-white text-muted">
+    <!-- /content block-->
+    <!-- footer -->
+    <footer class="text-lg-start bg-white text-muted border-top border-info-subtle">
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container  text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- DPM -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3 text-secondary"></i>Divakar Packers and Movers
+              </h6>
+               <li style="list-style:none;">
+                 <p></p>
+                Here you can use rows and columns to organize your footer content. Lorem ipsum
+                dolor sit amet, consectetur adipisicing elit.
+              </li>
+            </div>
+            <!-- Contact -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-
+              <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+               <li style="list-style:none;">
+            <p<i class="fas fa-home me-3 text-start"></i> Nandi vardhan house, Housing board Colony, Anantapur, Andra Pradesh, India.</li>
+               <li style="list-style:none;">
+            <p
+                <i class="fas fa-envelope me-3 text-reset"></i>
+                divakarpackers@gmail.com
+              </li>
+               <li style="list-style:none;">
+            <p<i class="fas fa-phone me-3 text-reset"></i> + 91 9492201243</li>
+               <li style="list-style:none;">
+            <p<i class="fas fa-print me-3 text-reset"></i> + 91 9703833553</li>
+            </div> 
+            <!-- Useful Links -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 d-none d-md-block">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Useful Links
+              </h6>
+               <li style="list-style:none;">
+                 <p>
+                   <a href="{{ url_for('about')}}" class="text-reset">About Us</a>
+                 </p>
+              </li>
+               <li style="list-style:none;">
+                 <p>
+                   <a href="{{ url_for('contact')}}" class="text-reset">Contact Us</a>
+                 </p>
+              </li>
+               <li style="list-style:none;">
+                 <p>
+                   <a href="{{ url_for('faq')}}" class="text-reset">FAQ</a>
+                 </p>
+              <!-- </li>
+               <li style="list-style:none;">
+                 <p>
+                   <a href="{{ url_for('about')}}" class="text-reset">Laravel</a>
+                 </p>
+              </li> -->
+            </div>
+            <!-- Useful Links dropdown -->
+            <div class="collapse navbar-collapse col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 d-block d-md-none" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <label class="d-block dropdown-toggle text-uppercase fw-bold mb-4 bg-none border-bottom border-info" data-bs-toggle="dropdown" aria-expanded="false">
+                  Useful Links
+                </label>
+                <ul class="dropdown-menu">
+                   <li style="list-style:none;">
+                                   <p></p>
+                <a href="#!" class="dropdown-item text-reset">About Us</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="dropdown-item text-reset d-block">Contact Us</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="dropdown-item text-reset d-block">FAQ</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="dropdown-item text-reset d-block">another link</a>
+              </li>
+                </ul>
+              </li>
+            </ul>
+</div>
+            <!-- Grid column -->
+   
+            <!-- Useful Services -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 d-none d-md-block">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Useful Services
+              </h6>
+               <li style="list-style:none;">
+                 <p>
+                   <a href="#!" class="text-reset">Household shifting</a>
+                 </p>
+              </li>
+               <li style="list-style:none;">
+                <a href="#!" class="text-reset">Office shifting</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="text-reset">Packing & Moving</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="text-reset">Premoving Survey</a>
+              </li>
+            </div>
+            <!-- Useful Services dropdown -->
+            <div class="collapse navbar-collapse col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 d-block d-md-none" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <label class="d-block dropdown-toggle text-uppercase fw-bold mb-4 bg-none border-bottom border-info" data-bs-toggle="dropdown" aria-expanded="false">
+                  Useful Services
+                </label>
+                <ul class="dropdown-menu">
+                  <li style="list-style:none;">
+                    <p><a href="#!" class="dropdown-item text-reset">Household shifting</a></p>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="dropdown-item text-reset d-block">Office shifting</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="dropdown-item text-reset d-block">Packing & Moving</a>
+              </li>
+               <li style="list-style:none;">
+                 <p></p>
+                <a href="#!" class="dropdown-item text-reset d-block">Premoving Survey</a>
+              </li>
+                </ul>
+              </li>
+            </ul>
+</div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
   <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3 text-secondary"></i>Company name
-          </h6>
-          <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
-          </h6>
-          <p>
-            <a href="#!" class="text-reset">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3 text-secondary"></i> New York, NY 10012, US</p>
-          <p>
-            <i class="fas fa-envelope me-3 text-secondary"></i>
-            info@example.com
-          </p>
-          <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
-  <!-- Section: Links  -->
-
   <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-    © 2021 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+    © 2023 Copyright:
+    <a class="dropdown-item text-reset fw-bold" href="#">name</a>
   </div>
   <!-- Copyright -->
-</footer>
-<!-- Footer -->
+    </footer>
     <!-- /footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+      .dropdown-menu .show{
+        display:block;
+      }
+    </style>
   </body>
 </html>
