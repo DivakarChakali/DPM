@@ -3,191 +3,95 @@
 Home page
 {% endblock %}
 {% block content %}
-    <link rel="stylesheet" href="/static/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <div class="tc container-fluid">
-        <img src="../static/Banner.jpg" class="img-fluid" alt="Banner">
-        <!-- <div class="bottom-right"><a href="https://www.freepik.com/free-vector/moving-service-workers-help-home-relocation_32883349.htm#query=packers%20and%20movers&position=29&from_view=keyword&track=ais" class="text-decoration-none text-body-tertiary fs-6 fw-lighter">Image by upklyak on Freepik</a></div> -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+</head>
+<body>
+  <div class="tc container-fluid d-none d-md-block">
+    <img src="{{ url_for('static', filename='images/Banner.jpg') }}" class="img-fluid" alt="Banner">
+    <div class="bottom-right"><a href="https://www.freepik.com/free-vector/moving-service-workers-help-home-relocation_32883349.htm#query=packers%20and%20movers&position=29&from_view=keyword&track=ais" class="text-decoration-none text-body-tertiary fs-6.5 fw-lighter">Image by upklyak on Freepik</a></div>
+  </div>
+  <div class="umc container-fluid text-start mt-3">
+    <div class="row">
+      <div class="col-lg-7 col-md-12 d-md-block">
+        <h2>Welcome to Divakar Packers and Movers</h2>
+          <div class="fs-5">
+            <p class="fs-6">
+              <span class="fs-5" >D</span>ivakar <span class="fs-5">P</span>ackers and <span class="fs-5">M</span>overs is the best and most skilled moving company in the industry of packaging and relocating. From several years, we emerged as the most efficient relocation provider in India, which offers remarkable services at affordable cost.
+            </p>
+            <p class="fs-6">
+              <span class="fs-5">W</span>e Believe that relocating is more than just relocating your possessions; it's a transformation in your life, and we at Divakar Packers and Movers are aware of this. With this knowledge, we approach every action we take with a tailored strategy. Our skilled team takes pride in handling your belongings with the respect they deserve, enabling a simple transition to your new location.
+            </p>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-md-5">
+          <img class="container-fluid" src="{{ url_for('static', filename='images/flat-design-house-moving-illustration-with-charaters_23-2148655568.webp') }}" alt="">
+          <div class="bottom-right mr-3">
+            Image by <a href="https://www.freepik.com/free-vector/flat-design-house-moving-illustration-with-charaters_9905413.htm#query=packers%20and%20movers&position=6&from_view=keyword&track=ais">Freepik</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="umc container-fluid text-start mt-5">
-        <div class="row">
-            <div class="col-lg-7 col-md-12 d-md-block">
-                <h2>Welcome to Divakar Packers and Movers</h2>
-                <div class="fs-5">
-                    <p class="fs-6">
-                        <span class="fs-5" >D</span>ivakar <span class="fs-5">P</span>ackers and <span class="fs-5">M</span>overs is the best and most skilled moving company in the industry of packaging and relocating. From several years, we emerged as the most efficient relocation provider in India, which offers remarkable services at affordable cost.
-                    </p>
-                    <p class="fs-6">
-                        <span class="fs-5">W</span>e Believe that relocating is more than just relocating your possessions; it's a transformation in your life, and we at Divakar Packers and Movers are aware of this. With this knowledge, we approach every action we take with a tailored strategy. Our skilled team takes pride in handling your belongings with the respect they deserve, enabling a simple transition to your new location.
-                    </p>
-                </div>
-            </div>
-            <div class="d-none d-lg-block col-md-5">
-                <img class="container-fluid " src="/static/flat-design-house-moving-illustration-with-charaters_23-2148655568.webp" alt="">
-            </div>
-        </div>
+  <div class="mc container-fluid mb-4">
+  <div class="lmc container-fluid mb-4">
+    <div class="fs-2 mb-4 mt-4 d-flex justify-content-center">
+        <span>Why Would Customer Choose Us & What Makes Us Unique?</span>
     </div>
-    <div class="mc container-fluid mb-4">
-        <div class="fs-2 mb-4 d-flex justify-content-center">
-            <span>Why Would Customer Choose Us & What Makes Us Unique?</span>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card service-card">
+            <div class="card-body">
+              <h5 class="card-title">FREE VISIT</h5>
+              <p class="card-text">Book a free visit to provide a customized plan to ensure your move is hassle-free and smooth.</p>
+            </div>
+          </div>
         </div>
-        <div class="row">
-            <div  class="col cards m-2 d-flex justify-content-center">
-                <div id="card-1"class="card" style="width: 18rem; border-width: 2px;">
-                    <div class="card-body">
-                        <h5 class="card-title fs-4">FREE VISIT</h5>
-                        <p class="card-text">Book a free visit to provide a customized plan to ensure your move is hassle-free and smooth</p>
-                    </div>
-                </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card service-card">
+            <div class="card-body">
+              <h5 class="card-title">AFFORDABLE RATES</h5>
+              <p class="card-text">Our services are trustworthy , dependable and at the most affordable rates among competitors</p>
             </div>
-            <div class="col cards m-2 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;border-width: 2px;">
-                    <div class="card-body">
-                        <h5 class="card-title fs-4">AFFORDABLE RATES</h5>
-                        <p class="card-text">Our services are trustworthy , dependable and at the most affordable rates among competitors</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col cards m-2 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;border-width: 2px;">
-                    <div class="card-body">
-                        <h5 class="card-title fs-4">PROFESSIONAL CREWS</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col cards m-2 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;border-width: 2px;">
-                    <div class="card-body">
-                        <h5 class="card-title fs-4">FASR DELIVERY</h5>
-                        <p class="card-text">Get your home items delivered quickly and safely to your doorstep.</p>
-                    </div>
-                </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card service-card">
+            <div class="card-body">
+              <h5 class="card-title">PROFESSIONAL CREWS</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
-            <div class="col cards m-2 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;border-width: 2px;">
-                    <div class="card-body">
-                        <h5 class="card-title fs-4">TRANSPARENCY</h5>
-                        <p class="card-text">It is crucial for building strong relationships and trust between us and our clients. No hidden charges.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col cards m-2 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;border-width: 2px;">
-                    <div class="card-body">
-                        <h5 class="card-title fs-4">24/7 CUSTOMER SUPPORT</h5>
-                        <p class="card-text">Receive customer help round-the-clock by phone, email.</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    
-    </div>
-    <button> Hover me</button>
-    <!-- <div class="lmc container-fluid">
-        <div id="lmc"class="row">
-            <div class="col-6">
-                <img class="container-fluid" src="/static/pexels-artem-podrez-5025668.jpg" sizes="height:20%;" alt="">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card service-card">
+            <div class="card-body">
+              <h5 class="card-title">FASTR DELIVERY</h5>
+              <p class="card-text">Get your home items delivered quickly and safely to your doorstep.</p>
             </div>
-            <div class="col-6">
-                <h2 style="text-align: center;">Get A Free Quote</h2>
-                <div class="container fs-5">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td class="border-bottom"><input type="text" placeholder="Name"></td>
-                            </tr>
-                            <tr>
-                                <td class="border-bottom"><input type="tel" placeholder="Phone"></td>
-                                <span></span>
-                                <td class="border-bottom"><input type="email" placeholder="Email"></td>
-                            </tr>
-                            <tr>
-                                <td class="border-bottom"><input type="text" placeholder="From City"></td>
-                                <td class="border-bottom"><input type="text" placeholder="To City"></td>
-                            </tr>
-                            <tr></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+          </div>
         </div>
-    </div> --> 
-    <!-- <div class="lmc container-fluid">
-        <div class="container-fluid">
-            <div class="services text-center fs-2 m-2">Our Services</div>
-            <div class="row">
-              <div class="col">
-                    <div class="border border-info-subtle m-2 rounded" style="width: 18rem;">
-                        <img src="/static/_5934c9ee-a5eb-4dd1-ade5-e396d9356a65.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-              </div>
-              <div class="col">
-                    <div class="border border-info-subtle m-2 rounded" style="width: 18rem;">
-                        <img src="/static/_f6b27bb9-a6ec-4339-8b38-3042b98822b0.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-              </div>
-              <div class="col">
-                    <div class="border border-info-subtle m-2 rounded" style="width: 18rem;">
-                        <img src="/static/_f6b27bb9-a6ec-4339-8b38-3042b98822b0.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-              </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card service-card">
+            <div class="card-body">
+              <h5 class="card-title">TRANSPARENCY</h5>
+              <p class="card-text">It is crucial for building strong relationships and trust between us and our clients. No hidden charges.</p>
             </div>
-            <div class="row">
-                <div class="col">
-                    <a>
-                        <div class="border border-info-subtle m-2 rounded" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a>
-                        <div class="border border-info-subtle m-2 rounded" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a>
-                        <div class="border border-info-subtle m-2 rounded" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+          </div>
         </div>
-    </div> -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card service-card">
+            <div class="card-body">
+              <h5 class="card-title">24/7 CUSTOMER SUPPORT</h5>
+              <p class="card-text">Receive customer help round-the-clock by phone, email.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
 {% endblock %}
