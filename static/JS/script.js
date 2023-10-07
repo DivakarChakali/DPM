@@ -7,20 +7,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     });
-function ULDMenu() {
-  var x = document.getElementById("usefulLinksDropdownMenu");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.ULM-toggle');
+  const menuList = document.querySelector('.UL-list');
 
-function USDMenu() {
-  var x = document.getElementById("usefulServicesDropdownMenu");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+  menuToggle.addEventListener('click', function() {
+    menuList.classList.toggle('active');
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.querySelector('.USM-toggle');
+  const menuList = document.querySelector('.US-list');
+
+  menuToggle.addEventListener('click', function() {
+    menuList.classList.toggle('active');
+  });
+});
