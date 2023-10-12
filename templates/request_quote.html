@@ -4,57 +4,56 @@ Request a Quote
 {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}"> 
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/styles.css')}}"> 
 <div class="row mb-4">
   <div class="d-none d-lg-block col-md-5">
-      <img class="container-fluid img-fluid" src="{{ url_for('static', filename='images/delivery-concept-portrait-handsome-african-american-delivery-man-courier-pushing-hand-truck-with-stack-boxes-isolated-grey-studio-background-copy-space.jpg') }}" alt="">
-      <div class="bottom-right mr-3">
-        <a href="https://www.freepik.com/free-photo/delivery-concept-portrait-handsome-african-american-delivery-man-courier-pushing-hand-truck-with-stack-boxes-isolated-grey-studio-background-copy-space_1289673.htm#page=2&query=packers%20and%20movers&position=31&from_view=keyword&track=ais">Image by benzoix</a> on Freepik
-      </div>
+    <img class="container-fluid img-fluid" src="{{ url_for('static', filename='images/delivery-concept-portrait-handsome-african-american-delivery-man-courier-pushing-hand-truck-with-stack-boxes-isolated-grey-studio-background-copy-space.jpg') }}" alt="">
+    <div class="bottom-right mr-3">
+      <a href="https://www.freepik.com/free-photo/delivery-concept-portrait-handsome-african-american-delivery-man-courier-pushing-hand-truck-with-stack-boxes-isolated-grey-studio-background-copy-space_1289673.htm#page=2&query=packers%20and%20movers&position=31&from_view=keyword&track=ais">Image by benzoix</a> on Freepik
     </div>
-  <div class="container col-lg-7 col-md-12 d-md-block">
-      <h1 class="text-center">Request a Quote</h1>
-      {% with messages = get_flashed_messages() %}
-          {% if messages %}
-              <ul class="alert alert-info">
-                  {% for message in messages %}
-                      <li style="list-style:none;">{{ message }}</li>
-                  {% endfor %}
-              </ul>
-          {% endif %}
-      {% endwith %}
-      <form method="POST" action="/submit_quote">
-          <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" class="form-control" id="phone" name="phone" required>
-          </div>
-          <div class="form-group">
-              <label for="movingDate">Moving Date</label>
-              <input type="date" class="form-control" id="movingDate" name="movingDate" required>
-          </div>
-          <div class="form-group">
-              <label for="origin">Origin</label>
-              <input type="text" class="form-control" id="origin" name="origin" required>
-          </div>
-          <div class="form-group">
-              <label for="destination">Destination</label>
-              <input type="text" class="form-control" id="destination" name="destination" required>
-          </div>
-          <div class="form-group">
-              <label for="specialRequests">Special Requests</label>
-              <textarea class="form-control" id="specialRequests" name="specialRequests" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
   </div>
-  </div>
-</body>
+  <div class="container-quote col-lg-7 col-md-12 d-md-block">
+        <h1 class="text-center">Request a Quote</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="alert alert-info">
+                    {% for message in messages %}
+                        <li style="list-style:none;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/submit_quote">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="movingDate">Moving Date</label>
+                <input type="date" class="form-control" id="movingDate" name="movingDate" required>
+            </div>
+            <div class="form-group">
+                <label for="origin">Origin</label>
+                <input type="text" class="form-control" id="origin" name="origin" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" class="form-control" id="destination" name="destination" required>
+            </div>
+            <div class="form-group">
+                <label for="specialRequests">Special Requests</label>
+                <textarea class="form-control" id="specialRequests" name="specialRequests" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

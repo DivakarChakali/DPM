@@ -4,7 +4,7 @@ Home page
 {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/styles.css')}}">
 <div class="tc container-fluid d-none d-md-block">
     <img src="{{ url_for('static', filename='images/Banner.jpg') }}" class="img-fluid" alt="Banner">
     <div class="bottom-right"><a href="https://www.freepik.com/free-vector/moving-service-workers-help-home-relocation_32883349.htm#query=packers%20and%20movers&position=29&from_view=keyword&track=ais" class="text-decoration-none text-body-tertiary fs-6.5 fw-lighter">Image by upklyak on Freepik</a></div>
@@ -53,49 +53,6 @@ Home page
     </div>
     {% endif %}
     </div>
-    <!-- <div id="raquote"class="container d-block d-sm-none">
-      <h1 class="text-center fs-6">Request a Quote</h1>
-      {% with messages = get_flashed_messages() %}
-          {% if messages %}
-              <ul class="alert alert-info">
-                  {% for message in messages %}
-                      <li style="list-style:none;">{{ message }}</li>
-                  {% endfor %}
-              </ul>
-          {% endif %}
-      {% endwith %}
-      <form method="POST" action="/submit_quote">
-          <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" class="form-control" id="phone" name="phone" required>
-          </div>
-          <div class="form-group">
-              <label for="movingDate">Moving Date</label>
-              <input type="date" class="form-control" id="movingDate" name="movingDate" required>
-          </div>
-          <div class="form-group">
-              <label for="origin">Origin</label>
-              <input type="text" class="form-control" id="origin" name="origin" required>
-          </div>
-          <div class="form-group">
-              <label for="destination">Destination</label>
-              <input type="text" class="form-control" id="destination" name="destination" required>
-          </div>
-          <div class="form-group">
-              <label for="specialRequests">Special Requests</label>
-              <textarea class="form-control" id="specialRequests" name="specialRequests" rows="4"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-  </div> -->
     <div class="row">
       <div class="col-lg-7 col-md-12 d-md-block">
         <h2>Welcome to Divakar Packers and Movers</h2>
@@ -109,7 +66,7 @@ Home page
           </div>
         </div>
         <div class="d-none d-lg-block col-md-5">
-          <img class="container-fluid" src="{{ url_for('static', filename='images/flat-design-house-moving-illustration-with-charaters_23-2148655568.webp') }}" alt="">
+          <img class="container-fluid" src="{{ url_for('static', filename='images/2c.webp') }}" alt="">
           <div class="bottom-right mr-3">
             Image by <a href="https://www.freepik.com/free-vector/flat-design-house-moving-illustration-with-charaters_9905413.htm#query=packers%20and%20movers&position=6&from_view=keyword&track=ais">Freepik</a>
           </div>
