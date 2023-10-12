@@ -1,18 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
 
-body{
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-
 .logo img, head .logo {
   border-radius:50%
 }
-.container-fluid {
+/* .container-fluid {
   position: relative;
   text-align: center;
   color: white;
-}
+} */
 
 .bottom-right {
   position: absolute;
@@ -68,7 +63,7 @@ body{
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 56px;
+    top: 48px;
     left: 0;
     background-color: #fff;
     width: 100%;
@@ -153,6 +148,63 @@ hr {
   }
 }
 
+/* cquote styles*/
+
+.c-quote {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.c-quote h1 {
+  text-align: center;
+}
+.c-quote form label {
+  font-weight: bold;
+  margin-bottom:0px;
+}
+.c-quote input[type="text"],
+.c-quote input[type="email"],
+.c-quote input[type="tel"],
+.c-quote input[type="date"],
+.c-quote textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.c-quote button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.c-quote button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+.c-quote .error {
+  color: #ff0000;
+}
+
+.container {
+  background-color: #dbdbdb;
+  padding: 20px;
+  border-radius: 5px;
+  opacity:0.5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset some default styles */
+
+h1 {
+    font-size: 24px;
+}
+
+
 /* Footer styles */
 .footer {
   background-color: gray;
@@ -166,13 +218,16 @@ hr {
 .footer-section {
   flex: 1;
   max-width: 300px;
+  text-align: start;
   margin: 10px 10px 10px 0px;
 }
 
 .footer-section h3,.UL-menu button, .US-menu button {
   font-size: 18px;
-  border-width:100%;
+  display:block;
+  width:100%;
   border-bottom: 2px solid white;
+  text-align:start;
 }
 
 .footer-section ul {
@@ -187,7 +242,7 @@ hr {
 
 .footer-section a {
   text-decoration: none;
-  color: #333;
+  color: #fff;
 }
 
 /* Media query for responsive footer on mobile devices */
@@ -202,20 +257,6 @@ hr {
   }
 }
 
-
-/* Reset some default styles */
-
-h1 {
-    font-size: 24px;
-}
-
-.container {
-  background-color: #dbdbdb;
-  padding: 20px;
-  border-radius: 5px;
-  opacity:0.5;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 .UL-Dropdown{
   display:block;
   width:100%
@@ -273,7 +314,13 @@ h1 {
   display:none
   }
 }
-
+#raquote{
+  background-color:red;
+  
+}
+#raquote~h1{
+  font-size:24px
+}
 
 
 
