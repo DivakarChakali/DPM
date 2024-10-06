@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block title %}Thank You{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='CSS/style.css')}}">
+    <h1>Thank You for Your Quote Request!</h1>
+    <p>We will get back to you as soon as possible.</p>
+{% endblock %}

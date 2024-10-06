@@ -1,90 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% block title %}
-        {% endblock %}
-    </title>
-    <link class="logo"rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.jpeg') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link class="logo" rel="icon" type="image/x-icon" href="/static/images/logo.jpeg">
   </head>
-  <body>
-    <header class="header">
-      {% include "navbar.html" %}
-    </header>
-    <div style=height:52px>
-    </div>
-    <!-- content block-->
-    <div class="container-fluid">
-      {% block content %}
-      {% endblock %}
-    </div>
-    <!-- /content block-->
-    <!-- footer -->
-    <footer class="footer container-fluid border border-5">
-      <div class="footer-section">
-          <h3>Divakar Packers and Movers</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="footer-section">
-          <h3>Contact Details</h3>
-          <p>Email: example@example.com</p>
-          <p>Phone: +1 (123) 456-7890</p>
-      </div>
-      <!-- useful links-->
-      <div class="footer-section">
-        <div class="usefulLinks">
-          <h3>Useful Links</h3>
-          <ul>
-            <li><a href="{{url_for('home')}}">Home</a></li>
-            <li><a href="{{url_for('about')}}">About Us</a></li>
-            <li><a href="{{url_for('contact')}}">Contact Us</a></li>
-            <li><a href="{{url_for('faq')}}">FAQ</a></li>
-          </ul>
-        </div>
-        <!-- useful links dropdown-->
-        <div class="UL-Dropdown">
-          <div class="UL-menu">
-            <button class="ULM-toggle">Useful Links</button>
-            <ul class="UL-list">
-              <li><a href="{{url_for('home')}}">Home</a></li>
-              <li><a href="{{url_for('about')}}">About Us</a></li>
-              <li><a href="{{url_for('faq')}}">FAQ</a></li>
-              <li><a href="{{url_for('contact')}}">Contact Us</a></li>
-            </ul>
+
+  <body class="m-0 mb-5">
+    <header class="fixed-top bg-light">
+      <div class="container-md p-0">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
+          <div class="container-fluid">
+            <div class="container-fluid">
+              <a class="navbar-brand p-0" href="/"
+                ><img
+                  src="static/images/dpm-logo.jpg"
+                  alt="Logo"
+                  style="height: 3em; border-radius: 50%"
+                /><span class="ms-3 4 d-none d-md-inline"
+                  >Divakar Packers and Movers</span
+                ></a
+              >
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav float-end">
+                <li class="nav-item page-links">
+                  <a class="nav-link" href="/"> Home </a>
+                </li>
+                <li class="nav-item page-links dropdown">
+                  <a class="nav-link" href="">Services</a>
+                  <div class="dropdown-content">
+                    <a
+                      class="services-dropdown-item ps-2"
+                      href="{{url_for('packing_moving')}}"
+                      >Packing &amp; Moving</a
+                    >
+                    <a
+                      class="services-dropdown-item ps-2"
+                      href="{{url_for('transportation')}}"
+                      >Transportation</a
+                    >
+                    <a
+                      class="services-dropdown-item ps-2"
+                      href="{{url_for('office_relocation')}}"
+                      >Office-Relocation</a
+                    >
+                    <a class="services-dropdown-item ps-2" href="{{url_for('services')}}"
+                      >More</a
+                    >
+                  </div>
+                </li>
+                <li class="nav-item page-links">
+                  <a class="nav-link" href="{{url_for('request_quote')}}">
+                    Request Quote
+                  </a>
+                </li>
+                <li class="nav-item page-links">
+                  <a class="nav-link" href="{{url_for('about')}}"> About </a>
+                </li>
+                <li class="nav-item page-links">
+                  <a class="nav-link" href="{{url_for('contact_us')}}"> Contact Us </a>
+                </li>
+                <li class="nav-item page-links">
+                  <a class="nav-link" href="{{url_for('faq')}}"> FAQ </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </nav>
+        <nav class="navbar bg-body-tertiary d-block d-lg-none">
+          <div class="container-fluid">
+            <div class="container-fluid d-flex justify-content-between">
+              <a class="navbar-brand p-0" href="{{url_for('home')}}"
+                ><img
+                  src="static/images/dpm-logo.jpg"
+                  alt="DPM navbar logo"
+                  style="height: 3em; border-radius: 50%"
+              /></a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="offcanvas offcanvas-end"
+                tabindex="-1"
+                id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel"
+              >
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                    Offcanvas
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        aria-current="page"
+                        href="/index.html"
+                        >Home</a
+                      >
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        href=""
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Services
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="services-dropdown-item ps-2" href="#"
+                            >Action</a
+                          >
+                        </li>
+                        <li>
+                          <a class="services-dropdown-item ps-2" href="#"
+                            >Another action</a
+                          >
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                          <a
+                            class="services-dropdown-item ps-2"
+                            href="/services.html"
+                            >More</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/request-quote.html"
+                        >Request Quote</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/faq.html">FAQ</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
       </div>
-      <!-- useful services-->
-      <div class="footer-section">
-        <div class="usefulServices">
-          <h3>Useful Services</h3>
-          <ul>
-            <li><a href="{{url_for('services')}}">Packing & Moving</a></li>
-            <li><a href="{{url_for('services')}}">Hoousehold Shifting</a></li>
-            <li><a href="{{url_for('services')}}">Transportation</a></li>
-            <li><a href="{{url_for('services')}}">Office Shifting</a></li>
-          </ul>
+    </header>
+    <main class="container px-0">{% block content %} {% endblock %}</main>
+    <footer
+      class="text-center text-lg-start text-dark"
+      style="background-color: #eceff1"
+    >
+      <!-- Section: Links  -->
+      <section class="pt-3">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold">Divakar Packers and Movers</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto bg-dark"
+                style="width: 100%; height: 2px"
+              />
+              <p>
+                Seamless Relocations, Stress-Free Transitions. Choose Divakar
+                Packers and Movers for a Moving Experience Beyond Compare.
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Useful Services</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto bg-dark"
+                style="width: 100%; height: 2px"
+              />
+              <p>
+                <a href="{{url_for('transportation')}}" class="text-dark page-links"
+                  >Transportation</a
+                >
+              </p>
+              <p>
+                <a href="{{url_for('office_relocation')}}" class="text-dark page-links"
+                  >Office Relocation</a
+                >
+              </p>
+              <p>
+                <a href="{{url_for('household_shifting')}}" class="text-dark page-links"
+                  >Household shifting</a
+                >
+              </p>
+              <p>
+                <a href="{{url_for('packing_moving')}}" class="text-dark page-links"
+                  >Packing &amp; Moving</a
+                >
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto bg-dark"
+                style="width: 100%; height: 2px"
+              />
+              <p>
+                <a href="/" class="text-dark page-links">Home</a>
+              </p>
+              <p>
+                <a href="{{url_for('about')}}" class="text-dark page-links">About</a>
+              </p>
+              <p>
+                <a href="{{url_for('faq')}}" class="text-dark page-links">FAQ</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Contact</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto bg-dark"
+                style="width: 100%; height: 2px"
+              />
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-house"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+                  />
+                </svg>
+                >Anantapur, Andhra Pradesh 515001, India.
+              </p>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-envelope"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
+                  />
+                </svg>
+                divakarpackersandmovers@gmail.com
+              </p>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-telephone"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+                  />
+                </svg>
+                >+91-9492201243
+              </p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
         </div>
-        <!-- useful services dropdown-->
-        <div class="US-menu">
-          <button class="USM-toggle">Useful Services</button>
-            <ul class="US-list">
-              <li><a href="{{url_for('services')}}">Packing & Moving</a></li>
-              <li><a href="{{url_for('services')}}">Hoousehold Shifting</a></li>
-              <li><a href="{{url_for('services')}}">Transportation</a></li>
-              <li><a href="{{url_for('services')}}">Office Shifting</a></li>
-            </ul>
-        </div>
+      </section>
+      <!-- Section: Links  -->
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2020-2024 Copyright:
+        <a
+          class="text-dark page-links"
+          href="https://divakarpackersandmover.com/"
+          >Divakar Packers and Movers</a
+        >
       </div>
+      <!-- Copyright -->
     </footer>
-    <!-- /footer -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </style>
-    <!-- <script src="{{ url_for('static', filename='JS/script.js')}}"> -->
-    </script>
+    <script src="/static/JS/bootstrap.bundle.min.js"></script>
   </body>
 </html>

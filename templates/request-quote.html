@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}
+Request a Quote
+{% endblock %}
+{% block content %}
+<div class="row mb-4 pages">
+  <div class="d-none d-lg-block col-md-5">
+  </div>
+  <div class="container-quote col-lg-7 col-md-12 d-md-block">
+        <h1 class="text-center">Request a Quote</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="alert alert-info">
+                    {% for message in messages %}
+                        <li style="list-style:none;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/submit-quote">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required autocomplete="on">
+            </div>
+            <div class="form-group">
+                <label for="moving-date">Moving Date</label>
+                <input type="date" class="form-control" id="moving-date" name="moving-date" required>
+            </div>
+            <div class="form-group">
+                <label for="from-address">From</label>
+                <input type="text" class="form-control" id="from-address" name="from-address" required>
+            </div>
+            <div class="form-group">
+                <label for="to-address">To</label>
+                <input type="text" class="form-control" id="to-address" name="to-address" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
