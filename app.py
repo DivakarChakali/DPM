@@ -11,7 +11,7 @@ email_pattern = r'^[\w\.-]+@[\w\.-]+$'
 
 #app configuratin for the mail sending
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
+app.config['MAIL_PORT'] = 587
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('DEFAULT_SENDER')
@@ -26,27 +26,27 @@ def home():
 def services():
   return render_template('services.html')
 
-@app.route('/office-relocation')
+@app.route('/services/office-relocation')
 def office_relocation():
   return render_template('office-relocation.html')
 
-@app.route('/household-shifting')
+@app.route('/services/household-shifting')
 def household_shifting():
   return render_template('household-shifting.html')
 
-@app.route('/loading-unloading')
+@app.route('/services/loading-unloading')
 def loading_unloading():
   return render_template('loading-unloading.html')
 
-@app.route('/packing-and-moving')
+@app.route('/services/packing-and-moving')
 def packing_moving():
   return render_template('packing-moving.html')
 
-@app.route('/pre-moving-survey')
+@app.route('/services/pre-moving-survey')
 def pre_moving_survey():
   return render_template('pre-moving-survey.html')
 
-@app.route('/transportation')
+@app.route('/services/transportation')
 def transportation():
   return render_template('transportation.html')
 
@@ -66,48 +66,17 @@ def contact_us():
 def faq():
   return render_template('faq.html')
 
-# @app.route('/submit-quote', methods=['POST'])
-# def submit_quote():
-#   name = request.form['name']
-#   email = request.form['email']
-#   phone = request.form['phone']
-#   moving_date = request.form['movingDate']
-#   origin = request.form['origin']
-#   destination = request.form['destination']
-#   special_requests = request.form['specialRequests']
-
-#   # Server-side validation
-#   if not name or not email or not phone or not moving_date or not origin or not destination:
-#     flash('All fields are required', 'error')
-#     return redirect(url_for('request_quote'))
-
-#   if not re.match(email_pattern, email):
-#     flash('Invalid email address', 'error')
-#     return redirect(url_for('request_quote'))
-
-#   # Save the data to a database or perform further processing here
-
-#   # For this example, we'll just print the data
-#   print(f'Name: {name}')
-#   print(f'Email: {email}')
-#   print(f'Phone: {phone}')
-#   print(f'Moving Date: {moving_date}')
-#   print(f'Origin: {origin}')
-#   print(f'Destination: {destination}')
-#   print(f'Special Requests: {special_requests}')
-
-#   flash('Quote request submitted successfully', 'success')
-#   return redirect(url_for('request_quote'))
-
 @app.route('/submit-quote', methods=['POST'])
-def submit():
+def submit_rform():
+  data = request.form
   # Get form data
   name = request.form['name']
   email = request.form['email']
   phone = request.form['phone']
-  moving_date = request.form['moving-date']
-  from_address = request.form['from-address']
-  to_address = request.form['to-address']
+  moving_date = request.form['moving_date']
+  origin = request.form['origin']
+  destination = request.form['destination']
+  special_requests = request.form['special_requests']
 
   # Server-side validation
   email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -126,21 +95,100 @@ def submit():
   if errors:
     return render_template('home.html', errors=errors)
   else:
-    subject = 'Successful Submission'
-    body = 'Your request has been successfully submitted.'
+    try:
+      # database.insert_data(data)
+      email_notification(name, email, phone, moving_date, origin, destination,
+                         special_requests)
+      # Flash a success message
+      flash("Your quotation request has been submitted successfully!",
+            "success")
+      return redirect(url_for('home'))
+    except Exception as e:
+      return f'Error: {str(e)}'
 
-    send_email(subject, email, body,from_address,to_address)
+@app.route('/submit-cform', methods=['POST'])
+def submitcform():
+  cdata = request.form
+  name = request.form['name']
+  email = request.form['email']
+  message = request.form['message']
+  cerrors = []
 
-    return 'Success'
-    # return redirect(url_for('thank_you'))
+  email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+
+  if not name:
+    cerrors.append('Name is required')
+  if not re.match(email_pattern, email):
+    cerrors.append('Invalid email format')
+
+  if cerrors:
+    return render_template('home.html', errors=cerrors)
+  else:
+    try:
+      # database.insert_data_details(cdata)
+      send_email_notification(name, email, message)
+      # Flash a success message
+      flash("Your contact request has been submitted successfully!", "success")
+      return redirect(url_for('home'))
+    except Exception as e:
+      return f'Error: {str(e)}'
 
 
-def send_email(subject, recipient, body,from_address,to_address):
-  msg = Message(subject,
-                sender='chdivakardiva192000@gmail.com',
-                recipients=[recipient])
-  msg.body = body
+def send_email_notification(name, email, message):
+  msg = Message(subject='contact request conformation', recipients=[email])
+  msg.html = render_template('EN/cmail.html',
+                             name=name,
+                             email=email,
+                             message=message)
   mail.send(msg)
+  # adminNC(name, email, message)
+
+
+def email_notification(name, email, phone, moving_date, origin, destination,
+                       special_requests):
+  msg = Message(subject='Acknowledgement from Divakarpackersandmover.com',
+                recipients=[email])
+  msg.html = render_template('EN/rmail.html',
+                             name=name,
+                             email=email,
+                             phone=phone,
+                             moving_date=moving_date,
+                             origin=origin,
+                             destination=destination,
+                             special_requests=special_requests)
+  mail.send(msg)
+  # adminNR(name, email, phone, moving_date, origin, destination,
+  #         special_requests)
+
+def adminNC(cname, cemail, cmessage):
+  msg = Message(subject='New contact request received', recipients=[admail])
+  msg.html = render_template('EN/amc.html',
+                             name=cname,
+                             email=cemail,
+                             message=cmessage)
+  mail.send(msg)
+
+
+def adminNR(name, email, phone, moving_date, origin, destination,
+            special_requests):
+  msg = Message(subject='New quotation request received', recipients=[admail])
+  msg.html = render_template('EN/amr.html',
+                             name=name,
+                             email=email,
+                             phone=phone,
+                             moving_date=moving_date,
+                             origin=origin,
+                             destination=destination,
+                             special_requests=special_requests)
+  mail.send(msg)
+
+
+@app.route('/thanks')
+def thanks():
+  response = app.make_response(render_template('thanks.html'))
+  response.headers[
+      'Cache-Control'] = 'public, max-age=3600'  # Example: Cache for 1 hour
+  return response
 
 # @app.route('/thank_you')
 # def thank_you():
