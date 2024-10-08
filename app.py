@@ -5,6 +5,7 @@ import re, os
 app = Flask(__name__)
 mail = Mail(app)
 app.secret_key = os.environ.get('SECRET_KEY')
+admail = os.environ.get('amail')
 
 # Simple email validation pattern
 email_pattern = r'^[\w\.-]+@[\w\.-]+$'
@@ -136,7 +137,7 @@ def submitcform():
 
 def send_email_notification(name, email, message):
   msg = Message(subject='contact request conformation', recipients=[email])
-  msg.html = render_template('EN/cmail.html',
+  msg.html = render_template('mail-templates/cmail.html',
                              name=name,
                              email=email,
                              message=message)
@@ -148,7 +149,7 @@ def email_notification(name, email, phone, moving_date, origin, destination,
                        special_requests):
   msg = Message(subject='Acknowledgement from Divakarpackersandmover.com',
                 recipients=[email])
-  msg.html = render_template('EN/rmail.html',
+  msg.html = render_template('mail-templates/rmail.html',
                              name=name,
                              email=email,
                              phone=phone,
@@ -160,27 +161,27 @@ def email_notification(name, email, phone, moving_date, origin, destination,
   # adminNR(name, email, phone, moving_date, origin, destination,
   #         special_requests)
 
-def adminNC(cname, cemail, cmessage):
-  msg = Message(subject='New contact request received', recipients=[admail])
-  msg.html = render_template('EN/amc.html',
-                             name=cname,
-                             email=cemail,
-                             message=cmessage)
-  mail.send(msg)
+# def adminNC(cname, cemail, cmessage):
+#   msg = Message(subject='New contact request received', recipients=[admail])
+#   msg.html = render_template('mail-templates/amc.html',
+#                              name=cname,
+#                              email=cemail,
+#                              message=cmessage)
+#   mail.send(msg)
 
 
-def adminNR(name, email, phone, moving_date, origin, destination,
-            special_requests):
-  msg = Message(subject='New quotation request received', recipients=[admail])
-  msg.html = render_template('EN/amr.html',
-                             name=name,
-                             email=email,
-                             phone=phone,
-                             moving_date=moving_date,
-                             origin=origin,
-                             destination=destination,
-                             special_requests=special_requests)
-  mail.send(msg)
+# def adminNR(name, email, phone, moving_date, origin, destination,
+#             special_requests, admail):
+#   msg = Message(subject='New quotation request received', recipients=[admail])
+#   msg.html = render_template('mail-templates/amr.html',
+#                              name=name,
+#                              email=email,
+#                              phone=phone,
+#                              moving_date=moving_date,
+#                              origin=origin,
+#                              destination=destination,
+#                              special_requests=special_requests)
+#   mail.send(msg)
 
 
 @app.route('/thanks')

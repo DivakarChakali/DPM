@@ -12,170 +12,70 @@
   <body class="m-0 mb-5">
     <header class="fixed-top bg-light">
       <div class="container-md p-0">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary d-none d-lg-block">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-            <div class="container-fluid">
-              <a class="navbar-brand p-0" href="/"
-                ><img
-                  src="static/images/dpm-logo.jpg"
-                  alt="Logo"
-                  style="height: 3em; border-radius: 50%"
-                /><span class="ms-3 4 d-none d-md-inline"
-                  >Divakar Packers and Movers</span
-                ></a
-              >
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
+            <div class="container-fluid d-flex justify-content-between">
+              <a class="navbar-brand px-3" href="/"><img src="static/images/dpm-logo.jpg" alt="DPM navbar logo" style="height: 3em; border-radius: 50%"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav float-end">
+              <div class="offcanvas offcanvas-end" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                    Divakar Packers and Movers
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body p-2">
+             <ul class="navbar-nav justify-content-end flex-grow-1">
                 <li class="nav-item page-links">
                   <a class="nav-link" href="/"> Home </a>
                 </li>
-                <li class="nav-item page-links dropdown">
+                <li class="nav-item dropdown d-block d-lg-none">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Services
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item ps-2" href="/services/packing-and-moving">Packing &amp; Moving</a></li>
+                    <li><a class="dropdown-item ps-2" href="/services/office-relocation">Office-Relocation</a></li>
+                    <li>
+                    <li><a class="dropdown-item ps-2" href="/services/transportation">Transportation</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/services">More</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item page-links dropdown d-none d-lg-block">
                   <a class="nav-link" href="">Services</a>
                   <div class="dropdown-content">
-                    <a
-                      class="services-dropdown-item ps-2"
-                      href="{{url_for('packing_moving')}}"
-                      >Packing &amp; Moving</a
-                    >
-                    <a
-                      class="services-dropdown-item ps-2"
-                      href="{{url_for('transportation')}}"
-                      >Transportation</a
-                    >
-                    <a
-                      class="services-dropdown-item ps-2"
-                      href="{{url_for('office_relocation')}}"
-                      >Office-Relocation</a
-                    >
-                    <a class="services-dropdown-item ps-2" href="{{url_for('services')}}"
-                      >More</a
-                    >
+                    <a class="services-dropdown-item ps-2" href="/services/packing-and-moving">Packing &amp; Moving</a>
+                    <a class="services-dropdown-item ps-2" href="/services/transportation">Transportation</a>
+                    <a class="services-dropdown-item ps-2" href="/services/office-relocation">Office-Relocation</a>
+                    <a class="services-dropdown-item ps-2" href="/services">More</a>
                   </div>
                 </li>
                 <li class="nav-item page-links">
-                  <a class="nav-link" href="{{url_for('request_quote')}}">
+                  <a class="nav-link" href="/request-quote">
                     Request Quote
                   </a>
                 </li>
                 <li class="nav-item page-links">
-                  <a class="nav-link" href="{{url_for('about')}}"> About </a>
+                  <a class="nav-link" href="/about"> About </a>
                 </li>
                 <li class="nav-item page-links">
-                  <a class="nav-link" href="{{url_for('contact_us')}}"> Contact Us </a>
+                  <a class="nav-link" href="/contact-us"> Contact Us </a>
                 </li>
                 <li class="nav-item page-links">
-                  <a class="nav-link" href="{{url_for('faq')}}"> FAQ </a>
+                  <a class="nav-link" href="/faq"> FAQ </a>
                 </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <nav class="navbar bg-body-tertiary d-block d-lg-none">
-          <div class="container-fluid">
-            <div class="container-fluid d-flex justify-content-between">
-              <a class="navbar-brand p-0" href="{{url_for('home')}}"
-                ><img
-                  src="static/images/dpm-logo.jpg"
-                  alt="DPM navbar logo"
-                  style="height: 3em; border-radius: 50%"
-              /></a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasNavbar"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div
-                class="offcanvas offcanvas-end"
-                tabindex="-1"
-                id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel"
-              >
-                <div class="offcanvas-header">
-                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                    Offcanvas
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav justify-content-end flex-grow-1">
-                    <li class="nav-item">
-                      <a
-                        class="nav-link active"
-                        aria-current="page"
-                        href="/index.html"
-                        >Home</a
-                      >
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a
-                        class="nav-link dropdown-toggle"
-                        href=""
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Services
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a class="services-dropdown-item ps-2" href="#"
-                            >Action</a
-                          >
-                        </li>
-                        <li>
-                          <a class="services-dropdown-item ps-2" href="#"
-                            >Another action</a
-                          >
-                        </li>
-                        <li class="dropdown-divider"></li>
-                        <li>
-                          <a
-                            class="services-dropdown-item ps-2"
-                            href="/services.html"
-                            >More</a
-                          >
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/request-quote.html"
-                        >Request Quote</a
-                      >
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/faq.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/faq.html">FAQ</a>
-                    </li>
-                  </ul>
+              </ul>     
                 </div>
               </div>
             </div>
           </div>
         </nav>
+        
       </div>
     </header>
     <main class="container px-0">{% block content %} {% endblock %}</main>
