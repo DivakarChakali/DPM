@@ -133,7 +133,7 @@ def contact_notification(name, email, message):
                              email=email,
                              message=message)
   mail.send(msg)
-  adminNC(name, email, message,admail)
+  # adminNC(name, email, message,admail)
 
 
 def request_notification(name, email, phone, moving_date, origin, destination):
@@ -147,7 +147,7 @@ def request_notification(name, email, phone, moving_date, origin, destination):
                              origin=origin,
                              destination=destination)
   mail.send(msg)
-  adminNR(name, email, phone, moving_date, origin, destination,admail)
+  # adminNR(name, email, phone, moving_date, origin, destination,admail)
 
 def adminNC(cname, cemail, cmessage,admail):
   msg = Message(subject='New contact request received', recipients=[admail])
