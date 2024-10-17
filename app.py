@@ -27,33 +27,29 @@ def home():
 def services():
   return render_template('services.html')
 
-@app.route('/services/office-relocation')
+@app.route('/office-relocation')
 def office_relocation():
-  return render_template('office-relocation.html')
+  return render_template('services/office-relocation.html')
 
-@app.route('/services/household-shifting')
+@app.route('/household-shifting')
 def household_shifting():
-  return render_template('household-shifting.html')
+  return render_template('services/household-shifting.html')
 
-@app.route('/services/loading-unloading')
+@app.route('/loading-unloading')
 def loading_unloading():
-  return render_template('loading-unloading.html')
+  return render_template('services/loading-unloading.html')
 
-@app.route('/services/packing-and-moving')
+@app.route('/packing-and-moving')
 def packing_moving():
-  return render_template('packing-moving.html')
+  return render_template('services/packing-moving.html')
 
-@app.route('/services/pre-moving-survey')
+@app.route('/pre-moving-survey')
 def pre_moving_survey():
-  return render_template('pre-moving-survey.html')
+  return render_template('services/pre-moving-survey.html')
 
-@app.route('/services/transportation')
+@app.route('/transportation')
 def transportation():
-  return render_template('transportation.html')
-
-@app.route('/request-quote')
-def request_quote():
-  return render_template('request-quote.html')
+  return render_template('services/transportation.html')
 
 @app.route('/about')
 def about():
@@ -75,9 +71,8 @@ def submit_rform():
   email = request.form['email']
   phone = request.form['phone']
   moving_date = request.form['moving_date']
-  origin = request.form['origin']
-  destination = request.form['destination']
-  special_requests = request.form['special_requests']
+  from_address = request.form['from_address']
+  to_address = request.form['to_address']
 
   # Server-side validation
   email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -97,9 +92,7 @@ def submit_rform():
     return render_template('home.html', errors=errors)
   else:
     try:
-      # database.insert_data(data)
-      email_notification(name, email, phone, moving_date, origin, destination,
-                         special_requests)
+      request_notification(name, email, phone, moving_date,from_address,to_address)
       # Flash a success message
       flash("Your quotation request has been submitted successfully!",
             "success")
@@ -126,27 +119,24 @@ def submitcform():
     return render_template('home.html', errors=cerrors)
   else:
     try:
-      # database.insert_data_details(cdata)
-      send_email_notification(name, email, message)
+      contact_notification(name, email, message)
       # Flash a success message
       flash("Your contact request has been submitted successfully!", "success")
       return redirect(url_for('home'))
     except Exception as e:
       return f'Error: {str(e)}'
 
-
-def send_email_notification(name, email, message):
+def contact_notification(name, email, message):
   msg = Message(subject='contact request conformation', recipients=[email])
   msg.html = render_template('mail-templates/cmail.html',
                              name=name,
                              email=email,
                              message=message)
   mail.send(msg)
-  # adminNC(name, email, message)
+  adminNC(name, email, message,admail)
 
 
-def email_notification(name, email, phone, moving_date, origin, destination,
-                       special_requests):
+def request_notification(name, email, phone, moving_date, origin, destination):
   msg = Message(subject='Acknowledgement from Divakarpackersandmover.com',
                 recipients=[email])
   msg.html = render_template('mail-templates/rmail.html',
@@ -155,50 +145,28 @@ def email_notification(name, email, phone, moving_date, origin, destination,
                              phone=phone,
                              moving_date=moving_date,
                              origin=origin,
-                             destination=destination,
-                             special_requests=special_requests)
+                             destination=destination)
   mail.send(msg)
-  # adminNR(name, email, phone, moving_date, origin, destination,
-  #         special_requests)
+  adminNR(name, email, phone, moving_date, origin, destination,admail)
 
-# def adminNC(cname, cemail, cmessage):
-#   msg = Message(subject='New contact request received', recipients=[admail])
-#   msg.html = render_template('mail-templates/amc.html',
-#                              name=cname,
-#                              email=cemail,
-#                              message=cmessage)
-#   mail.send(msg)
+def adminNC(cname, cemail, cmessage,admail):
+  msg = Message(subject='New contact request received', recipients=[admail])
+  msg.html = render_template('mail-templates/amc.html',
+                             name=cname,
+                             email=cemail,
+                             message=cmessage)
+  mail.send(msg)
 
-
-# def adminNR(name, email, phone, moving_date, origin, destination,
-#             special_requests, admail):
-#   msg = Message(subject='New quotation request received', recipients=[admail])
-#   msg.html = render_template('mail-templates/amr.html',
-#                              name=name,
-#                              email=email,
-#                              phone=phone,
-#                              moving_date=moving_date,
-#                              origin=origin,
-#                              destination=destination,
-#                              special_requests=special_requests)
-#   mail.send(msg)
-
-
-@app.route('/thanks')
-def thanks():
-  response = app.make_response(render_template('thanks.html'))
-  response.headers[
-      'Cache-Control'] = 'public, max-age=3600'  # Example: Cache for 1 hour
-  return response
-
-# @app.route('/thank_you')
-# def thank_you():
-#   msg = Message('Hello from the other side!',
-#                 sender='chdivakardiva192000@gmail.com',
-#                 recipients=['chdivakardiva192000@gmail.com'])
-#   msg.body = "Hey Paul, sending you this email from my Flask app, lmk if it works"
-#   mail.send(msg)
-#   return "Message sent!"
+def adminNR(name, email, phone, moving_date, origin, destination,admail):
+  msg = Message(subject='New quotation request received', recipients=[admail])
+  msg.html = render_template('mail-templates/amr.html',
+                             name=name,
+                             email=email,
+                             phone=phone,
+                             moving_date=moving_date,
+                             origin=origin,
+                             destination=destination)
+  mail.send(msg)
 
 if __name__ == '__main__':
   app.run(host="0.0.0.0", debug=True)
